@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c508eb7e8dc09c372f5eb81a7d770996",
+    "revision": "b652e382a584984bdd7e6844697049d0",
     "url": "/rate-chart/index.html"
   },
   {
-    "revision": "1cc395c306dd6d4ab77e",
+    "revision": "a9e9be582e9ca7a35f9f",
     "url": "/rate-chart/static/css/main.5b876b2b.chunk.css"
   },
   {
-    "revision": "a8967cdd8c0dfd5814f3",
-    "url": "/rate-chart/static/js/2.35f56b74.chunk.js"
+    "revision": "fd24c6923fbebd6f9edb",
+    "url": "/rate-chart/static/js/2.d8ba91b6.chunk.js"
   },
   {
     "revision": "f2a020ebcdd97c593a441d685b589e20",
-    "url": "/rate-chart/static/js/2.35f56b74.chunk.js.LICENSE.txt"
+    "url": "/rate-chart/static/js/2.d8ba91b6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1cc395c306dd6d4ab77e",
-    "url": "/rate-chart/static/js/main.395f7f0c.chunk.js"
+    "revision": "a9e9be582e9ca7a35f9f",
+    "url": "/rate-chart/static/js/main.18a4c47c.chunk.js"
   },
   {
     "revision": "775576bb49c23c14a5c2",
