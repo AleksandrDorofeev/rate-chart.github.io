@@ -38,10 +38,11 @@ const App = () => {
 
       const dataNew = [].concat(
         convertRates(responseUSD.data),
-        convertRatesEUR(responseEUR.data)
+        convertRates(responseEUR.data)
       );
 
       const grouped = _.groupBy(dataNew, "time");
+      console.log(grouped, data)
       for (const [key, value] of Object.entries(grouped)) {
         const row = { time: key };
         for (const item of value) {
@@ -59,17 +60,20 @@ const App = () => {
   }, [date]);
 
   const convertRates = (rates) => {
-    return {
-      time: format(new Date(rates["date"]), "dd.MM"),
-      USD: rates["rates"].RUB,
-    };
-  };
-
-  const convertRatesEUR = (rates) => {
-    return {
-      time: format(new Date(rates["date"]), "dd.MM"),
-      EUR: rates["rates"].RUB,
-    };
+    switch (rates.base) {
+      case "USD":
+        return {
+          time: format(new Date(rates["date"]), "dd.MM"),
+          USD: rates["rates"].RUB,
+        };
+      case "EUR":
+        return {
+          time: format(new Date(rates["date"]), "dd.MM"),
+          EUR: rates["rates"].RUB,
+        };
+      default:
+        return 0;
+    }
   };
 
   useEffect(() => {
@@ -119,11 +123,11 @@ const App = () => {
           <div>EUR</div>
           {data !== undefined &&
             data.map((item, i) => (
-              <div key={i}>
+              <React.Fragment key={i}>
                 <div>{item.time}</div>
                 <div>{item.USD}</div>
                 <div>{item.EUR}</div>
-              </div>
+              </React.Fragment>
             ))}
         </div>
       </div>
