@@ -81,7 +81,6 @@ const App = () => {
 
   return (
     <div className="chart">
-      {console.log(data)}
       <div>
         <LineChart
           width={500}
@@ -119,12 +118,12 @@ const App = () => {
           <div>USD</div>
           <div>EUR</div>
           {data !== undefined &&
-            data.map((item) => (
-              <>
+            data.map((item, i) => (
+              <div key={i}>
                 <div>{item.time}</div>
                 <div>{item.USD}</div>
                 <div>{item.EUR}</div>
-              </>
+              </div>
             ))}
         </div>
       </div>
