@@ -42,7 +42,6 @@ const App = () => {
       );
 
       const grouped = _.groupBy(dataNew, "time");
-      console.log(grouped, data)
       for (const [key, value] of Object.entries(grouped)) {
         const row = { time: key };
         for (const item of value) {
