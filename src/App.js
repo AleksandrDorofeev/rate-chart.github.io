@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
-import { format, addDays } from "date-fns";
+import { addDays } from "date-fns";
 import _ from "lodash";
+
+import {formatDate} from "./utils/formatDate"
+import {convertRates} from "./utils/converRates"
 
 import {
   LineChart,
@@ -23,16 +26,10 @@ const App = () => {
     const fetchData = async () => {
       const [responseUSD, responseEUR] = await Promise.all([
         axios.get(
-          `https://api.exchangeratesapi.io/${format(
-            date,
-            "yyyy-MM-dd"
-          )}?base=USD&symbols=RUB`
+          `https://api.exchangeratesapi.io/${formatDate(date)}?base=USD&symbols=RUB`
         ),
         axios.get(
-          `https://api.exchangeratesapi.io/${format(
-            date,
-            "yyyy-MM-dd"
-          )}?base=EUR&symbols=RUB`
+          `https://api.exchangeratesapi.io/${formatDate(date)}?base=EUR&symbols=RUB`
         ),
       ]);
 
@@ -57,23 +54,6 @@ const App = () => {
     };
     fetchData();
   }, [date]);
-
-  const convertRates = (rates) => {
-    switch (rates.base) {
-      case "USD":
-        return {
-          time: format(new Date(rates["date"]), "dd.MM"),
-          USD: rates["rates"].RUB,
-        };
-      case "EUR":
-        return {
-          time: format(new Date(rates["date"]), "dd.MM"),
-          EUR: rates["rates"].RUB,
-        };
-      default:
-        return 0;
-    }
-  };
 
   useEffect(() => {
     const timer =
